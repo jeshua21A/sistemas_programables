@@ -7,8 +7,8 @@ import urequests
 from micropyGPS import MicropyGPS
 
 # Parámetros de configuración Wi-Fi
-ssid = "rochasainez"
-password = "35631354"
+ssid = "Waos"
+password = "00000009"
 
 # Parámetros de configuración MQTT Dash
 broker_MQTT = "broker.hivemq.com"
@@ -22,7 +22,7 @@ Topic_Hora = b"practica/gps/hora"
 # Parámetros de configuración GPS
 # Le decimos a MicropyGPS que use el formato 'dd' (Grados decimales)
 gps = MicropyGPS(location_formatting='dd')
-puerto_uart = UART(2, baudrate=9600, tx=13, rx=15, timeout=10)
+puerto_uart = UART(2, baudrate=9600, tx=17, rx=16, timeout=10)
 
 # URL de Firebase para conectar la base de datos
 Firebase_URL = "https://mapa-interactivo-548d3-default-rtdb.firebaseio.com/.json"
@@ -89,9 +89,9 @@ def main():
     de configuración de Firebase.
     """
     while True:
-        # Leer todos los bytes disponibles del buffer UART
+        # Leer para determinar que todos los bytes esten disponibles en el buffer UART
         if puerto_uart.any():
-            # Leer bloque de datos (bytes)
+            # Leer el bloque de datos (bytes)
             datos_uart = puerto_uart.read()
             if datos_uart:
                 try:
